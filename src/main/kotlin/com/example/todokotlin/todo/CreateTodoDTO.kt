@@ -16,7 +16,7 @@ class CreateTodoDTO(
 class UpdateTodoDTO(
     @NotNull
     @Positive
-    val id: Int,
+    val id: Long,
 
     @NotNull
     val done: Boolean,

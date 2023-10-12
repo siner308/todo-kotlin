@@ -1,13 +1,25 @@
 package com.example.todokotlin.todo
 
 import com.example.todokotlin.user.User
+import jakarta.persistence.*
 
 
-data class Todo(
-    var title: String? = null,
+@Entity(name = "todo")
+class Todo(
+    @Id
+    @GeneratedValue()
+    var id: Long = 0,
+
+    @Column(name = "title", nullable = false)
+    var title: String,
+
+    @Column(name = "description", columnDefinition = "TEXT")
     var description: String? = null,
-    var done: Boolean? = false,
-    var user: User? = null,
-) {
-    var id: Int? = null
-}
+
+    @Column(nullable = false)
+    var done: Boolean = false,
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id", nullable = false)
+    var user: User,
+)

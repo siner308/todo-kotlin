@@ -19,7 +19,7 @@ class TodoController @Autowired constructor(private val todoService: TodoService
     }
 
     @GetMapping("/{id}")
-    fun getTodo(@PathVariable id: Int): Todo {
+    fun getTodo(@PathVariable id: Long): Todo {
         return this.todoService.getByIdOrFail(id)
     }
 
@@ -33,7 +33,7 @@ class TodoController @Autowired constructor(private val todoService: TodoService
     }
 
     @DeleteMapping("/{id}")
-    fun removeTodo(@PathVariable id: Int): Unit {
+    fun removeTodo(@PathVariable id: Long): Unit {
         this.todoService.delete(id)
     }
 }
